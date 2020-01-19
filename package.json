@@ -1,0 +1,9 @@
+{
+  "name": "gearhead",
+  "version": "0.0.1",
+  "description": "Gear Generator",
+  "main": "index.js",
+  "repository": "github.com/acweathersby/gearhead.git",
+  "author": "galactrax <anthonycweathersby@gmail.com>",
+  "license": "MIT"
+}
