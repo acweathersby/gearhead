@@ -2,6 +2,7 @@
 
 References
 	http://www.gearseds.com/files/Approx_method_draw_involute_tooth_rev2.pdf
+	http://www.otvinta.com/gear.html
 */
 
 const cos = Math.cos,
@@ -12,6 +13,21 @@ function involute(t, r, a = 0) {
 		x: r * (cos(t) + (t - a) * sin(t)),
 		y: r * (sin(t) - (t - a) * cos(t))
 	}
+}
+
+function rotate(vec, angle){
+	return {
+		x: vec.x * cos(angle) - vec.y * sin(angle),
+		y: vec.x * sin(angle)  + vec.y * cos(angle)
+	}
+}
+
+function flipY(vec){
+	return {x:vec.x, y: -vec.y}
+}
+
+function scale(vec, scalar){
+	return {x:vec.x * scalar, y:vec.y * scalar}
 }
 
 function strokeCircle(x, y, r, ctx, style = "black") {
@@ -30,15 +46,16 @@ function GearHead(canvas) {
 	const pitch_diameter = 50;
 
 	function drawGear(teeth_count) {
-		let module = 30;
+		let module = 20;
 		let pressure_angle = 20 * Math.PI / 180;
 		let profile_shift = 0;
-		let pitch_diameter = 360 / teeth_count;
 		let reference_diameter = module * teeth_count;
 		let base_diameter = reference_diameter * cos(pressure_angle)
 		let tip_diameter = reference_diameter + 2 * module  * (1 + profile_shift)
+		let root_diameter = reference_diameter - (tip_diameter - reference_diameter) * (1.05 + profile_shift)
 		let tip_radius = tip_diameter / 2;
 		let base_radius = base_diameter / 2;
+		let root_radius = root_diameter / 2;
 		let reference_radius = reference_diameter /2;
 		var tip_pressure_angle = Math.acos(base_diameter / tip_diameter);
 		var inv_alpha = Math.tan(pressure_angle) - pressure_angle;
@@ -52,32 +69,11 @@ function GearHead(canvas) {
 		// distance between beginning and end of the involute curve
 		var d = Math.sqrt( ( x1 - x2 ) * ( x1 - x2 ) + ( y1 - y2 ) * ( y1 - y2 ) );
 		var cosx = (base_radius ** 2 + tip_radius ** 2 - d ** 2) / 2 / base_radius / tip_radius;
-		var base_tooth_angle = 2 * top_thickness + 2 * Math.acos(cosx) ;
-
-		console.log(base_tooth_angle * 180 / Math.PI)
-
-		let NoT = teeth_count;
-
-		//
+		var base_tooth_angle = 2 * top_thickness + 2 * Math.acos(cosx);
+		var pitch = (Math.PI * 2) / teeth_count;
 
 		//The pitch is the distance from tooth touch point to tooth touch point. 
-
-		//let pitch_diameter = NoT/pitch;
-
-
-		//console.log({pitch, module, pitch_diameter, pitch_diameter})
-
-		let pressure_radius = pitch_diameter;
-		const count = 50;
-		const tooth_count = teeth_count;
-
-		strokeCircle(0, 0, base_radius, ctx, "red")
-		strokeCircle(0, 0, reference_radius, ctx, "blue")
-		strokeCircle(0, 0, tip_radius, ctx, "green")
-		//strokeCircle(0, 0, inner_diameter, ctx, "green")
-
 		ctx.beginPath();
-
 
 		//Scale out to beginning of curve
 		ctx.moveTo(base_radius, 0)
@@ -107,8 +103,6 @@ function GearHead(canvas) {
 				involute_radius_squared = (invol.x ** 2) + (invol.y ** 2);
 			}
 
-			console.log({involute_radius_squared, end_radius_squared} , i)
-
 			let result = involute(a+ratio, involute_radius, a);
 
 			result.i = i;
@@ -116,14 +110,8 @@ function GearHead(canvas) {
 			return result;
 		}
 
-
 		const intersect = approxIntersect(base_radius, (tip_radius) ** 2);
-		
-		console.log(intersect, )
-
 		const pr = involute((intersect.i - 0.000001) * Math.PI * 2, base_radius, 0);
-		const r = ((360 / NoT) * Math.PI / 180) * 0.5;
-
 		const xt = intersect.x - pr.x;
 		const yt = intersect.y - pr.y;
 		const m = Math.sqrt(xt * xt + yt * yt);
@@ -131,17 +119,44 @@ function GearHead(canvas) {
 		const yi = yt / m;
 		const s = intersect.y / yi;
 		const xr = -(s * xi) + intersect.x;
-		const yr = -(s * yi) + intersect.y;
+		const tip = intersect;
+		const base = {x:base_radius, y:0};
+		const ctrl = {x:xr, y:0};
 
-		console.log({xr, yr}, {xi,yi})
+		//ctx.moveTo(base.x, base.y);
+		//ctx.quadraticCurveTo(xr, 0, intersect.x, intersect.y)
 
-		ctx.quadraticCurveTo(xr, 0, intersect.x, intersect.y)
-		
-		ctx.lineTo(intersect.x, intersect.y + 10, 2, 0, 6);
+		function drawGearTooth(b, c, t, tooth, pitch,  base_tooth_angle, base_to_root_ratio){
+			const base_angle = pitch * tooth;
+			const tip = rotate(t, base_angle);
+			const base = rotate(b, base_angle);
+			const ctrl = rotate(c, base_angle);
+			const tipM = rotate(flipY(t), base_angle + base_tooth_angle);
+			const baseM = rotate(flipY(b), base_angle + base_tooth_angle);
+			const ctrlM = rotate(flipY(c), base_angle + base_tooth_angle);
+
+			const baseNext = rotate(b, base_angle + pitch);
+			//const baseInsetCTRL1 = scale(rotate(b, base_angle + pitch - (pitch - base_tooth_angle) * 0.5), base_to_root_ratio*0.8);
+			//const baseInsetCTRL2 = scale(rotate(b, base_angle + pitch - (pitch - base_tooth_angle) * 0.5), base_to_root_ratio*0.8);
+			const baseInsetCTRL1 = scale(baseM, base_to_root_ratio*0.9);
+			const baseInsetCTRL2 = scale(baseNext, base_to_root_ratio*0.9);
+			
+			ctx.quadraticCurveTo(ctrl.x, ctrl.y, tip.x, tip.y)
+			ctx.lineTo(tipM.x, tipM.y);
+			ctx.quadraticCurveTo(ctrlM.x, ctrlM.y, baseM.x, baseM.y)
+			//Todo - Create A better bottom land, based on root circle 
+			ctx.bezierCurveTo(baseInsetCTRL1.x, baseInsetCTRL1.y, baseInsetCTRL2.x, baseInsetCTRL2.y, baseNext.x, baseNext.y);
+		}
+
+		for(let i = 0; i < teeth_count; i++){
+			drawGearTooth(base, ctrl, tip, i, pitch, base_tooth_angle, root_diameter / base_diameter);
+			//break;
+		}
 
 		ctx.fill();
 
 		ctx.fillStyle = "red"
+		/*
 
 		for (let j = 0; j < NoT; j++) {
 
@@ -165,7 +180,12 @@ function GearHead(canvas) {
 			}
 
 			ctx.rotate(((360 / NoT) * Math.PI / 180));
-		}
+		}*/
+
+		strokeCircle(0, 0, base_radius, ctx, "red")
+		strokeCircle(0, 0, reference_radius, ctx, "blue")
+		strokeCircle(0, 0, tip_radius, ctx, "green")
+		strokeCircle(0, 0, root_radius, ctx, "orange")
 	}
 	let t = 0;
 
@@ -194,13 +214,13 @@ function GearHead(canvas) {
 
 		ctx.save();
 		ctx.rotate(t +=0.002 )
-		drawGear(20);
+		drawGear(12);
 		ctx.restore();
 
 		ctx.save();
 		ctx.translate(x, y)
-		ctx.rotate(-t / (5 / 20))
-		drawGear(5);
+		ctx.rotate(-t / (15 / 12))
+		drawGear(15);
 		ctx.restore();
 	}, 16)
 }
