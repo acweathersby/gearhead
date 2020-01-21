@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "github.com/acweathersby/gearhead.git",
   "author": "galactrax <anthonycweathersby@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@candlefw/lantern": "^0.0.12"
+  }
 }
