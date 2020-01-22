@@ -11,7 +11,7 @@ export class vec2 extends Array {
 	}
 
 	set x(x) {
-		this.x = +x;
+		this[0] = +x;
 	}
 
 	get y() {
@@ -19,7 +19,7 @@ export class vec2 extends Array {
 	}
 
 	set y(y) {
-		this.y = +y;
+		this[1] = +y;
 	}
 }
 

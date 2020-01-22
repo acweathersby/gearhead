@@ -158,6 +158,22 @@ export default class {
 		return this.d[1];
 	}
 
+	get angle_degrees() {
+		return this.d[4] * 180 / PI;
+	}
+
+	set angle_degrees(m){
+		this.d[4] = m * PI / 180;
+	}
+
+	get angle() {
+		return this.d[4];
+	}
+
+	set angle(m){
+		this.d[4] = m;
+	}
+
 	set profile_shift(p) {
 		this.d[2] = p;
 	}
@@ -280,9 +296,5 @@ export default class {
 		this.ele = path.toElement(document);
 
 		return this.ele;
-	}
-
-	update() {
-
 	}
 }
