@@ -54,6 +54,9 @@ function getToothData(gear) {
 		yi = yt / m,
 		s = intersect.y / yi,
 		xr = -(s * xi) + intersect.x;
+
+		gear.tip_involute_intersect = intersect.i; 
+
 	return { tip: intersect, base: new vec2(br, 0), ctrl: new vec2(xr, 0) };
 }
 
@@ -191,6 +194,10 @@ export default class {
 	}
 
 	get pitch() {
+		return PI * 2 / this.number_of_teeth;
+	}
+
+	get patch() {
 		return PI * 2 / this.number_of_teeth;
 	}
 

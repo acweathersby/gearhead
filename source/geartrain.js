@@ -22,7 +22,8 @@ export default function(...gears) {
 
 				if(g.c){
 					for(const child of g.c){
-						child.angle = -g.angle * child.ratio + child.angle_offset;
+						child.angle = -g.angle * child.ratio - child.angle_offset;
+						//child.angle += child.slop_angle_offset * ((g.angle > 0) ? -1:  -1);
 					}
 				}
 				const r = g.tip_radius;
@@ -73,13 +74,20 @@ export default function(...gears) {
 		},
 		/* Connects the gear to another gear, accounting positional and angular offsets */
 		connectGears(parent, child){
-			const angle_vec = v.sub(parent.pos, child.pos)
+			const angle_vec = v.sub(child.pos, parent.pos)
 			const gear_distance = v.length(angle_vec);
 			const norm_vec = v.scale(angle_vec, 1/gear_distance)
+			const tip_distance = parent.tip_radius + child.tip_radius;
+			const root_distance = parent.root_radius + child.root_radius;
+			const reference_distance = parent.reference_radius + child.reference_radius;
+			const child_reference_to_tip_length = child.tip_radius - child.reference_radius;
+			const parent_interference = gear_distance - parent.reference_radius - child.reference_radius;
+			const ratio = parent_interference / 3 / child_reference_to_tip_length;
+			const offset = ratio * child.tip_involute_intersect
 
 			if(
-				gear_distance < parent.tip_radius + child.tip_radius &&
-				gear_distance > parent.root_radius + child.root_radius &&
+				gear_distance < tip_distance &&
+				gear_distance > reference_distance &&
 				parent.module == child.module
 			){
 				const ratio = parent.number_of_teeth / child.number_of_teeth;
@@ -87,16 +95,16 @@ export default function(...gears) {
 				//calculate the angle offset necessary for correct meshing
 				const dot = v.dot(norm_vec, new v.vec2(1,0));
 
-				const angle = Math.asin(dot);
-
-				console.log(Math.asin(dot), 106 * Math.PI / 180 , norm_vec)
+				const angle = Math.acos(dot) //* Math.sign(child.pos[1] - parent.pos[1]);
 
 
+				console.log({pp:parent.pitch, norm_vec})
+				
 				child.ratio = ratio;
-
-			
-
-				child.angle_offset = parent.pitch - child.base_tooth_angle ///+ angle * 2;
+				child.angle_offset = ((parent.pitch < child.pitch) ? -parent.pitch / child.pitch : child.pitch / parent.pitch);
+				//-child.base_tooth_angle * 0.5 + (parent.base_tooth_angle * 0.5 / ratio)  + (child.pitch * 0.5 / ratio)
+				//angle//(child.pitch - child.base_tooth_angle) + angle
+				child.slop_angle_offset = offset;
 
 				//const rotational_offset = 
 				parent.c.push(child);

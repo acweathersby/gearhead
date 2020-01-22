@@ -16,6 +16,8 @@ export class Path {
 		path.setAttribute("d", this.data.join(" "));
 		path.setAttribute("width", "100%");
 		path.setAttribute("height", "100%");
+		path.setAttribute("fill", "none");
+		path.setAttribute("stroke", "black");
 		svg.appendChild(path);
 		return svg;
 	}
