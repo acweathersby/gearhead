@@ -101,12 +101,8 @@ export default function(...gears) {
 				console.log({pp:parent.pitch, norm_vec})
 				
 				child.ratio = ratio;
-				child.angle_offset = ((parent.pitch < child.pitch) ? -parent.pitch / child.pitch : child.pitch / parent.pitch);
-				//-child.base_tooth_angle * 0.5 + (parent.base_tooth_angle * 0.5 / ratio)  + (child.pitch * 0.5 / ratio)
-				//angle//(child.pitch - child.base_tooth_angle) + angle
+				child.angle_offset = ((parent.pitch < child.pitch) ? -parent.pitch / child.pitch : child.pitch / parent.pitch) + angle * ((parent.pitch < child.pitch) ? parent.pitch / child.pitch : -child.pitch / parent.pitch)
 				child.slop_angle_offset = offset;
-
-				//const rotational_offset = 
 				parent.c.push(child);
 
 			} 

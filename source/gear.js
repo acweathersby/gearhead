@@ -131,6 +131,7 @@ export default class {
 		this.pressure_angle_degrees = 20;
 		this.profile_shift = 0;
 		this.parent = null;
+		this.rotation_direction = 0;
 	}
 
 	build() {
@@ -162,11 +163,11 @@ export default class {
 	}
 
 	get angle_degrees() {
-		return this.d[4] * 180 / PI;
+		return this.angle * 180 / PI;
 	}
 
 	set angle_degrees(m){
-		this.d[4] = m * PI / 180;
+		this.angle = m * PI / 180;
 	}
 
 	get angle() {
@@ -174,6 +175,9 @@ export default class {
 	}
 
 	set angle(m){
+		//Calculate the absolute slope of the direction delta
+		this.rotation_direction
+
 		this.d[4] = m;
 	}
 

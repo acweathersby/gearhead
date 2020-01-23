@@ -1,4 +1,5 @@
-const cos = Math.cos,
+const 
+	cos = Math.cos,
 	sin = Math.sin;
 
 export class vec2 extends Array {

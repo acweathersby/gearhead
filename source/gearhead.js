@@ -31,14 +31,15 @@ function GearHead() {
 		y = e.y;
 	})
 
-	const gear1 = new Gear, gear2 = new Gear, gear3 = new Gear, gear4 = new Gear;
+	const gear1 = new Gear, gear2 = new Gear, gear3 = new Gear, gear4 = new Gear, gear5 = new Gear;
 
 	gear1.number_of_teeth = 12;
 	gear2.number_of_teeth = 36;
 	gear3.number_of_teeth = 30;
 	gear4.number_of_teeth = 20;
+	gear5.number_of_teeth = 15;
 
-	const train = GeartrainFactory(gear1,gear2, gear3, gear4)
+	const train = GeartrainFactory(gear1,gear2, gear3, gear4, gear5)
 
 	train.mountToDOM(document.body);
 
@@ -60,16 +61,19 @@ function GearHead() {
 	gear4.pos.x = 711
 	gear4.pos.y = 345
 
+	gear5.pos.x = 492
+	gear5.pos.y = 650
 
 	train.connectGears(gear1, gear2);
 	train.connectGears(gear1, gear3);
 	train.connectGears(gear3, gear4);
+	train.connectGears(gear2, gear5);
 
 	let i = 0;
 
 	setInterval(()=>{
 
-		gear1.angle_degrees = Math.cos(i += 1.0) * 200;
+		gear1.angle = Math.cos(i += 0.01) * 6;
 
 		train.update();
 	}, 16.66666)
