@@ -1,6 +1,7 @@
 import * as svg from "./svg_draw.js";
 
 import { involute, rotate, flipY, scale, vec2 } from "./vec2.js";
+import * as v from "./vec2.js";
 
 const cos = Math.cos,
 	sin = Math.sin,
@@ -60,8 +61,8 @@ function getToothData(gear) {
 	return { tip: intersect, base: new vec2(br, 0), ctrl: new vec2(xr, 0) };
 }
 
-function gearToothDrawData(b, c, t, tooth, pitch, base_tooth_angle, base_to_root_ratio) {
-	const base_angle = pitch * tooth;
+function gearToothDrawData(b, c, t, tooth, pitch, base_tooth_angle, base_to_root_ratio, angle_offset = 0) {
+	const base_angle = pitch * tooth + angle_offset;
 	return {
 		tip: rotate(t, base_angle),
 		base: rotate(b, base_angle),
@@ -70,10 +71,10 @@ function gearToothDrawData(b, c, t, tooth, pitch, base_tooth_angle, base_to_root
 		baseM: rotate(flipY(b), base_angle + base_tooth_angle),
 		ctrlM: rotate(flipY(c), base_angle + base_tooth_angle),
 		baseNext: rotate(b, base_angle + pitch),
-		rootInsetStart: rotate(scale(b, base_to_root_ratio * 1.05), base_angle + base_tooth_angle),
-		rootInsetCTRL1: rotate(scale(b, base_to_root_ratio), base_angle + base_tooth_angle),
-		rootInsetCTRL2: rotate(scale(b, base_to_root_ratio), base_angle + pitch),
-		rootInsetEnd: rotate(scale(b, base_to_root_ratio * 1.05), base_angle + pitch)
+		rootInsetStart: rotate(scale(b, base_to_root_ratio* 0.97 ), base_angle + base_tooth_angle),
+		rootInsetCTRL1: rotate(scale(b, base_to_root_ratio* 0.97), base_angle + base_tooth_angle),
+		rootInsetCTRL2: rotate(scale(b, base_to_root_ratio* 0.97), base_angle + pitch),
+		rootInsetEnd: rotate(scale(b, base_to_root_ratio * 0.97), base_angle + pitch)
 	}
 }
 
@@ -124,7 +125,7 @@ function drawGearToothSVG(path, ...d) {
 }
 
 
-export default class {
+export default class Gear {
 	constructor() {
 		this.d = [];
 		this.module = 10;
@@ -287,7 +288,7 @@ export default class {
 		ctx.restore();
 	}
 
-	bindSVGElement(document = document) {
+	bindSVGElement(document = window.document) {
 		const path = new svg.Path;
 		path.width = this.tip_diameter;
 		path.height = this.tip_diameter;
@@ -302,10 +303,12 @@ export default class {
 		svg.moveTo(path, this.base_radius, 0)
 
 		for (let i = 0; i < this.number_of_teeth; i++)
-			drawGearToothSVG(path, invData.base, invData.ctrl, invData.tip, i, p, bta, rd / bd);
+			drawGearToothSVG(path, invData.base, invData.ctrl, invData.tip, i, p, bta, rd / bd, -this.base_tooth_angle/2);
 
 		this.ele = path.toElement(document);
 
 		return this.ele;
 	}
 }
+
+window.Gear = Gear;

@@ -4,6 +4,154 @@
 		"selected_items":
 		[
 			[
+				"ch",
+				"child"
+			],
+			[
+				"rti",
+				"ratio"
+			],
+			[
+				"root",
+				"root_radius"
+			],
+			[
+				"tip",
+				"tip_pressure_angle"
+			],
+			[
+				"gear",
+				"gear_distance"
+			],
+			[
+				"ge",
+				"gear3"
+			],
+			[
+				"chi",
+				"child_reference_to_tip_length"
+			],
+			[
+				"len",
+				"lengthSqrd"
+			],
+			[
+				"base",
+				"base_radius"
+			],
+			[
+				"dc",
+				"document"
+			],
+			[
+				"pre",
+				"pressure_angle_degrees"
+			],
+			[
+				"pro",
+				"profile_shift"
+			],
+			[
+				"dr",
+				"drawOnCanvasContext"
+			],
+			[
+				"bas",
+				"base_diameter"
+			],
+			[
+				"roo",
+				"root_diameter"
+			],
+			[
+				"tp",
+				"tip_radius"
+			],
+			[
+				"inv",
+				"involute_radius_squared"
+			],
+			[
+				"ref",
+				"reference_diameter"
+			],
+			[
+				"too",
+				"base_tooth_angle"
+			],
+			[
+				"st",
+				"strokeStyle"
+			],
+			[
+				"invol",
+				"involute_radius_squared"
+			],
+			[
+				"in",
+				"invol"
+			],
+			[
+				"out",
+				"outer_diameter"
+			],
+			[
+				"en",
+				"end_radius_sqared"
+			],
+			[
+				"invo",
+				"involute"
+			],
+			[
+				"re",
+				"reference_diameter"
+			],
+			[
+				"pt",
+				"pitch_diameter"
+			],
+			[
+				"pi",
+				"pitch_diameter"
+			],
+			[
+				"pit",
+				"pitch_diameter"
+			],
+			[
+				"pith",
+				"pitch"
+			],
+			[
+				"dire",
+				"diameter"
+			],
+			[
+				"x1",
+				"x1r"
+			],
+			[
+				"pitc",
+				"pitch"
+			],
+			[
+				"pitch",
+				"pitch_diameter"
+			],
+			[
+				"stro",
+				"strokeCircle"
+			],
+			[
+				"ra",
+				"radius"
+			],
+			[
+				"wid",
+				"width\tproperty"
+			],
+			[
 				"update",
 				"updateObservers"
 			],
@@ -32,10 +180,6 @@
 				"new_next_group"
 			],
 			[
-				"out",
-				"output_element"
-			],
-			[
 				"el",
 				"element"
 			],
@@ -46,10 +190,6 @@
 			[
 				"nex",
 				"next_list"
-			],
-			[
-				"pro",
-				"productionSelect"
 			],
 			[
 				"ne",
@@ -116,10 +256,6 @@
 				"SECTION_SENTINAL"
 			],
 			[
-				"in",
-				"in_sub_count"
-			],
-			[
 				"sub",
 				"subs"
 			],
@@ -134,14 +270,6 @@
 			[
 				"li",
 				"list_element"
-			],
-			[
-				"chi",
-				"child"
-			],
-			[
-				"ch",
-				"children"
 			],
 			[
 				"create",
@@ -268,14 +396,6 @@
 				"stylerule"
 			],
 			[
-				"st",
-				"stylerule"
-			],
-			[
-				"re",
-				"rulesets"
-			],
-			[
 				"type",
 				"types"
 			],
@@ -360,10 +480,6 @@
 				"CSSLength"
 			],
 			[
-				"tp",
-				"type"
-			],
-			[
 				"rg",
 				"RGB_TYPE"
 			],
@@ -398,132 +514,77 @@
 			[
 				"cl",
 				"clientX"
-			],
-			[
-				"stat",
-				"state"
-			],
-			[
-				"modal",
-				"modal_url"
-			],
-			[
-				"path",
-				"pathname"
-			],
-			[
-				"prev",
-				"prev_url"
-			],
-			[
-				"cure",
-				"current_view"
-			],
-			[
-				"to",
-				"toString"
-			],
-			[
-				"load",
-				"loadPage"
-			],
-			[
-				"moa",
-				"modal_stack"
-			],
-			[
-				"moda",
-				"modal_stack"
-			],
-			[
-				"I",
-				"IGNORE_NAVIGATION"
-			],
-			[
-				"act",
-				"active_presets"
-			],
-			[
-				"current",
-				"current_view"
-			],
-			[
-				"pre",
-				"prev_url"
-			],
-			[
-				"com",
-				"compile"
-			],
-			[
-				"tap",
-				"tap_name"
-			],
-			[
-				"page",
-				"pageX"
-			],
-			[
-				"pag",
-				"pageX"
-			],
-			[
-				"IS",
-				"IS_ON_MASTER"
-			],
-			[
-				"master",
-				"master_component"
-			],
-			[
-				"comp",
-				"component"
-			],
-			[
-				"is",
-				"IS_ON_MASTER"
-			],
-			[
-				"IS_",
-				"IS_ON_MASTER"
-			],
-			[
-				"content",
-				"contentWindow"
-			],
-			[
-				"Te",
-				"TEST"
-			],
-			[
-				"if",
-				"iframe"
-			],
-			[
-				"diff",
-				"diffy"
-			],
-			[
-				"ro",
-				"root_x"
-			],
-			[
-				"acti",
-				"active_handler"
-			],
-			[
-				"tar",
-				"target_element"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "gearhead.sublime-project",
+			"file": "source/index.html",
 			"settings":
 			{
-				"buffer_size": 172,
+				"buffer_size": 346,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/gear.js",
+			"settings":
+			{
+				"buffer_size": 6919,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/gearhead.js",
+			"settings":
+			{
+				"buffer_size": 1382,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/anthony/work/active/apps/cfw/lantern/package.json",
+			"settings":
+			{
+				"buffer_size": 973,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 296,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/geartrain.js",
+			"settings":
+			{
+				"buffer_size": 3386,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/svg_draw.js",
+			"settings":
+			{
+				"buffer_size": 1342,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/vec2.js",
+			"settings":
+			{
+				"buffer_size": 1281,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -767,14 +828,10 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/Users/aweathersby/work/gearhead",
-		"/C/Users/aweathersby/work/gearhead/source"
-	],
+
 	"file_history":
 	[
-		"/C/Users/aweathersby/work/gearhead/index.html",
+
 		"/home/anthony/work/active/apps/cfw/flame/.git/COMMIT_EDITMSG",
 		"/home/anthony/work/active/apps/cfw/css.ui/source/types/id.js",
 		"/home/anthony/work/active/apps/cfw/css.ui/source/types/media.js",
@@ -894,18 +951,11 @@
 		"/home/anthony/work/active/apps/cfw/css/source/selector.mjs",
 		"/home/anthony/work/active/apps/cfw/css/test/css_box_model_properties_level_3.js",
 		"/home/anthony/work/active/apps/cfw/css/source/properties/productions.mjs",
-		"/home/anthony/work/active/apps/cfw/css/source/css_parser.mjs",
-		"/home/anthony/work/active/apps/cfw/css/test/css_position_properties_level_3.js",
-		"/home/anthony/work/active/apps/cfw/css/build/config/config.js",
-		"/home/anthony/work/active/apps/cfw/css/source/properties/terms.mjs",
-		"/home/anthony/core",
-		"/home/anthony/work/active/apps/cfw/css/source/css_html.mjs",
-		"/home/anthony/work/active/apps/cfw/css/source/Parser/css.mjs",
-		"/home/anthony/work/active/apps/cfw/css/test/css_writing_mode_properties_level_3.js"
+
 	],
 	"find":
 	{
-		"height": 40.0
+
 	},
 	"find_in_files":
 	{
@@ -919,20 +969,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"parent",
-			"normalized_vec",
-			"console.log",
-			"NoT",
-			"tooth_count",
-			"count",
-			"root_diameter",
-			"pressure_radius",
-			"pitch_diameter",
-			"r",
-			"tip",
-			"drawGear",
-			"flipY",
-			"base_tooth_angle"
+
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -950,78 +987,28 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "gearhead.sublime-project",
+
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 172,
+
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								172,
-								172
+
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PackageDev/Package/Sublime Text Project/Sublime Text Project.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/gearhead.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1500,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1361,
-								1361
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1083.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "source/geartrain.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3282,
-						"regions":
-						{
-						},
-						"selection":
-						[
+
 							[
 								594,
 								594
@@ -1123,72 +1110,94 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "source/svg_draw.js",
+					"buffer": 1,
+					"file": "source/gear.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1342,
+						"buffer_size": 6919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								363,
-								363
+								6582,
+								6582
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"SL.39.region_keys":
+							[
+							],
+							"SL.51.region_keys":
+							[
+							],
+							"SL.575.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4080.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 2,
+					"file": "source/gearhead.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 79,
+						"buffer_size": 1382,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								79,
-								79
+								1382,
+								1382
 							]
 						],
 						"settings":
 						{
-							"auto_name": "My end goal is to create quality, intuitivly built",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"SL.36.region_keys":
+							[
+							],
+							"SL.48.region_keys":
+							[
+							],
+							"SL.49.region_keys":
+							[
+							],
+							"SL.595.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 581.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
+
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+
 	},
 	"input":
 	{
@@ -1203,11 +1212,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.525087298807,
 			1.0
 		],
 		"rows":
@@ -1229,7 +1245,7 @@
 	"project": "gearhead.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1239,22 +1255,7 @@
 		"selected_items":
 		[
 			[
-				"ind",
-				"source\\index.html"
-			],
-			[
-				"inde",
-				"source\\index.html"
-			],
-			[
-				"gear",
-				"source\\gear.js"
-			],
-			[
-				"ve",
-				"source\\vec2.js"
-			],
-			[
+
 				"ui_sty",
 				"css.ui/source/ui_property.js"
 			],
@@ -1749,6 +1750,7 @@
 			[
 				"builder",
 				"css/source/ui/builder.mjs"
+
 			]
 		],
 		"width": 0.0
@@ -1795,7 +1797,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 553.0,
+
 	"status_bar_visible": true,
 	"template_settings":
 	{
